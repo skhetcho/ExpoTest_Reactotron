@@ -5,10 +5,11 @@ import Reactotron, {networking} from 'reactotron-react-native'
 
 Reactotron
   .configure({host: '192.168.0.21'}) //this is also the ip address that expo is using
-  .use(networking({
-    ignoreUrls: /\/(logs|symbolicate)$/,
-  }))
-  .useReactNative()
+  .useReactNative({
+    networking: {
+      ignoreUrls: /\/(logs|symbolicate)$/,
+    }
+  })
   .connect()
 
   export default class App extends React.Component {
